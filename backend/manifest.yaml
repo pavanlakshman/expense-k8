@@ -4,32 +4,32 @@ metadata:
   name: backend
   namespace: expense
 data:
-  DB_HOST: mysql  # mysql component service name
-----
-apiVersion: apps/v1
+  DB_HOST: mysql # mysql component service name
+---
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: backend
   namespace: expense
-  # These labels are related to deployment
+  # these labels are deployment related labels
   labels:
     component: backend
-    tier: app
     project: expense
+    tier: app
 spec:
   replicas: 2
   selector:
     matchLabels:
       component: backend
-      tier: app
       project: expense
-  # Pod definition file starts from here
+      tier: app
+  # pod definition
   template:
     metadata:
       labels:
         component: backend
-        tier: app
         project: expense
+        tier: app
     spec:
       containers:
       - name: backend
@@ -37,6 +37,7 @@ spec:
         envFrom:
         - configMapRef:
             name: backend
+
 
 ---
 apiVersion: v1
@@ -47,8 +48,8 @@ metadata:
 spec:
   selector:
     component: backend
-    tier: app
     project: expense
+    tier: app
   ports:
   - protocol: TCP
     port: 8080 #service-port
