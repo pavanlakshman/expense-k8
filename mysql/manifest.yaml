@@ -108,5 +108,5 @@ spec:
         tier: db
     spec:
       containers:
-        name: mysql
+      - name: mysql
         image: admin8055/mysql:v1.0
