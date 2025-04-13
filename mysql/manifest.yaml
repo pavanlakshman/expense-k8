@@ -106,6 +106,7 @@ spec:
         component: mysql
         project: expense
         tier: db
+        createdby: pavan
     spec:
       containers:
       - name: mysql
